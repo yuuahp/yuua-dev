@@ -1,0 +1,15 @@
+<svg width="31" height="149" viewBox="0 0 31 149" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <mask id="path-1-inside-1_0_1" fill="white">
+        <path d="M14 0H29V78H24C18.4772 78 14 73.5228 14 68V0Z"/>
+    </mask>
+    <path d="M14 0H29H14ZM29 79H24C17.9249 79 13 74.0751 13 68H15C15 72.9706 19.0294 77 24 77H29V79ZM24 79C17.9249 79 13 74.0751 13 68V0H15V68C15 72.9706 19.0294 77 24 77V79ZM29 0V78V0Z"
+          fill="#D0D7DE" mask="url(#path-1-inside-1_0_1)"/>
+    <mask id="path-3-inside-2_0_1" fill="white">
+        <path d="M0 75C0 69.4772 4.47715 65 10 65H29V125H10C4.47715 125 0 120.523 0 115V75Z"/>
+    </mask>
+    <path d="M-1 75C-1 68.9249 3.92487 64 10 64H29V66H10C5.02944 66 1 70.0294 1 75H-1ZM29 126H10C3.92487 126 -1 121.075 -1 115H1C1 119.971 5.02944 124 10 124H29V126ZM10 126C3.92487 126 -1 121.075 -1 115V75C-1 68.9249 3.92487 64 10 64V66C5.02944 66 1 70.0294 1 75V115C1 119.971 5.02944 124 10 124V126ZM29 65V125V65Z"
+          fill="#D0D7DE" mask="url(#path-3-inside-2_0_1)"/>
+    <line x1="28.5" y1="2.18557e-08" x2="28.5" y2="149" stroke="#D0D7DE"/>
+    <circle cx="28.5" cy="77.5" r="2" fill="white" stroke="#D0D7DE"/>
+    <circle cx="28.5" cy="65.5" r="2" fill="white" stroke="#D0D7DE"/>
+</svg>

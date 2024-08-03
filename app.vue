@@ -10,11 +10,11 @@
         </div>
       </div>
       <div class="
-        absolute top-0 left-0 w-full h-full p-8 pt-16 flex flex-col gap-y-8
+        absolute top-0 left-0 w-full h-full p-8 pt-16 flex flex-col gap-y-16
         hide-scrollbar overflow-y-scroll overflow-x-hidden rounded-2xl
        ">
         <!-- intro -->
-        <div class="flex gap-x-16 mb-8">
+        <div class="flex gap-x-16 mt-16 mb-8">
           <div class="w-52 h-fit relative z-10 rounded-t-2xl photo-shadow-corner before:bg-brown-background">
             <p class="text-center bg-[#2f2833] text-[#f5ede9] rounded-t-2xl font-jb-mono pt-1">yuua-icon-v4.png</p>
             <nuxt-img class="w-full rounded-b-2xl" src="/yuua-icon-v4.png"/>
@@ -28,11 +28,12 @@
             </h1>
             <p class="pl-4 mb-4">
               A hobby developer who LOVES <span class="font-black kotlin-gradient">Kotlin</span>.<br>
-              I learn and create by following the paths of my curiosity.
+              I learn and develop by letting my curiosity lead the way.
             </p>
             <div class="pl-4">
               <p class="mb-2">What are you looking for today?</p>
               <div class="flex gap-x-2 mb-2">
+                <!--TODO: Always-visible navigation on side-->
                 <Button icon="pen-ruler">
                   Works & Projects
                 </Button>
@@ -54,7 +55,7 @@
             <font-awesome-icon icon="fad fa-pen-ruler"/>
           </h1>
           <div class="flex flex-wrap gap-4">
-            <WorkCard class="work-card-flex"
+            <WorkCard class="card-flex"
                       icon="volume-high"
                       title="VCSpeaker.kt"
                       details="Text channels, now with voice" no_right_truncate>
@@ -63,7 +64,7 @@
                           description="🔊 Text channel, now with voice"
                           language="Kotlin" language_color="#a97bff"/>
             </WorkCard>
-            <WorkCard class="work-card-flex"
+            <WorkCard class="card-flex"
                       icon="dice-d20"
                       title="Fortune"
                       details="Play TRPG without leaving Discord" no_right_truncate>
@@ -72,7 +73,7 @@
                           description="🎲 Play TRPG without leaving Discord"
                           language="Kotlin" language_color="#a97bff"/>
             </WorkCard>
-            <WorkCard class="work-card-flex"
+            <WorkCard class="card-flex"
                       icon="hexagon-image"
                       title="Dynmap Processor"
                       details="Dynmap image annotator CLI" no_right_truncate>
@@ -81,7 +82,7 @@
                           description="🧭 Automated edit & annotation for Dynmap images"
                           language="Kotlin" language_color="#a97bff"/>
             </WorkCard>
-            <WorkCard class="work-card-flex"
+            <WorkCard class="card-flex"
                       icon="school"
                       title="School Festival '22"
                       details="Online culture festival website" no_right_truncate>
@@ -97,7 +98,7 @@
                 </div>
               </div>
             </WorkCard>
-            <WorkCard class="work-card-flex"
+            <WorkCard class="card-flex"
                       icon="graduation-cap"
                       title="UniDB"
                       details="Universities' open-campus data website" no_right_truncate>
@@ -113,7 +114,7 @@
                 </div>
               </div>
             </WorkCard>
-            <WorkCard class="work-card-flex"
+            <WorkCard class="card-flex"
                       icon="language"
                       title="終わりの詩"
                       details="Translation of The End Poem by Julian Gough">
@@ -123,9 +124,18 @@
               もっと良い夢を見た。
             </WorkCard>
           </div>
-
         </div>
-
+        <!--socials (GitHub, Twitter/X, Reddit, Steam, Email)-->
+        <div>
+          <h1 class="text-brown-primary text-3xl font-black mb-4">
+            Socials
+            <font-awesome-icon icon="fad fa-thumbs-up"/>
+          </h1>
+          <div class="flex flex-wrap gap-4">
+            <GitHubAccount class="card-flex"/>
+            <TwitterAccount class="card-flex"/>
+          </div>
+        </div>
       </div>
       <!-- card holder -->
       <div class="w-full -mt-8 relative z-[90]">
@@ -151,6 +161,8 @@
 import WorkCard from "~/components/WorkCard.vue";
 import Button from "~/components/Button.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import GitHubAccount from "~/components/accounts/GitHubAccount.vue";
+import TwitterAccount from "~/components/accounts/TwitterAccount.vue";
 </script>
 
 <style>
@@ -199,7 +211,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   scrollbar-width: none;
 }
 
-.work-card-flex {
+.card-flex {
   @apply w-[calc(50%-.5rem)] h-52;
 }
 
