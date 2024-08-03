@@ -132,10 +132,18 @@
             <font-awesome-icon icon="fad fa-thumbs-up"/>
           </h1>
           <div class="flex flex-wrap gap-4">
-            <GitHubAccount class="card-flex"/>
-            <TwitterAccount class="card-flex"/>
-            <RedditAccount class="card-flex"/>
-            <SteamAccount class="card-flex"/>
+            <div class="card-flex card3d">
+              <GitHubAccount class="inside w-full h-full"/>
+            </div>
+            <div class="card-flex card3d">
+              <TwitterAccount class="inside w-full h-full"/>
+            </div>
+            <div class="card-flex card3d">
+              <RedditAccount class="inside w-full h-full"/>
+            </div>
+            <div class="card-flex card3d">
+              <SteamAccount class="inside w-full h-full"/>
+            </div>
           </div>
         </div>
       </div>
@@ -167,6 +175,42 @@ import GitHubAccount from "~/components/accounts/GitHubAccount.vue";
 import TwitterAccount from "~/components/accounts/TwitterAccount.vue";
 import RedditAccount from "~/components/accounts/RedditAccount.vue";
 import SteamAccount from "~/components/accounts/SteamAccount.vue";
+import {onMounted} from "vue";
+
+// forked from https://codepen.io/nelsonr/pen/WNQaZPb
+
+function map(val, minA, maxA, minB, maxB) {
+  return minB + ((val - minA) * (maxB - minB)) / (maxA - minA);
+}
+
+function Card3D(card, ev) {
+  let img = card.querySelector('.inside');
+  let mouseX = ev.offsetX;
+  let mouseY = ev.offsetY;
+  let rotateY = map(mouseX, 0, 180, -5, 5);
+  let rotateX = map(mouseY, 0, 250, 10, -10);
+  let brightness = map(mouseY, 0, 250, 1.1, 0.9);
+
+  img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  img.style.filter = `brightness(${brightness})`;
+}
+
+onMounted(() => {
+  document.querySelectorAll('.card3d').forEach((card) => {
+    card.addEventListener('mousemove', (ev) => {
+      Card3D(card, ev);
+    });
+
+    card.addEventListener('mouseleave', (ev) => {
+      let img = card.querySelector('.inside');
+
+      if (!img) return;
+
+      img.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      img.style.filter = 'brightness(1)';
+    });
+  });
+});
 </script>
 
 <style>
@@ -221,5 +265,25 @@ import SteamAccount from "~/components/accounts/SteamAccount.vue";
 
 .trapezoid {
   clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.card3d {
+  transform: scale(1);
+  perspective: 400px;
+}
+
+.card3d:hover {
+  z-index: 10;
+  transform: scale(1.1);
+}
+
+.card3d:active {
+  z-index: 10;
+  transform: scale(1.05);
+}
+
+.card3d,
+.card3d .inside {
+  transition: all 250ms ease-out;
 }
 </style>
