@@ -3,8 +3,8 @@
 </script>
 
 <template>
-<div class="relative aspect-[5/3] bg-white rounded-2xl border-2 border-[#D0D7DE]">
-  <img src="~/assets/GitHubBranch.svg" alt="GitHub Branch" class="absolute right-[4.25rem] h-full">
+<div class="group cursor-pointer relative aspect-[5/3] bg-white rounded-2xl border-2 border-[#D0D7DE]">
+  <img src="~/assets/GitHubBranch.svg" alt="GitHub Branch" class="absolute right-[4.25rem] h-full z-0">
   <div class="h-8 w-full py-2 px-4">
     <p class="font-bold text-[#636C76] text-sm">
       <font-awesome-icon icon="fa-duotone fa-solid fa-arrow-left" />
@@ -25,7 +25,7 @@
       </div>
       <div class="w-[calc(100%-4rem)] h-full flex flex-col justify-center pl-6">
         <p class="text-sm text-[#636C76] font-bold -mb-1">Personal Account</p>
-        <p class="text-lg text-[#1F2328] font-black">yuuaHP</p>
+        <p class="text-lg text-[#1F2328] font-black group-hover:underline">yuuaHP</p>
       </div>
     </div>
     <div class="h-[calc(100%-4rem)]">

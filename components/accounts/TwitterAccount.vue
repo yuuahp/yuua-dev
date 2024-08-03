@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<div class="relative aspect-[5/3] bg-white rounded-2xl border-2 border-[#D0D7DE]">
+<div class="group cursor-pointer aspect-[5/3] bg-white rounded-2xl border-2 border-[#D0D7DE]">
   <div class="
     w-[calc(100%+4px)] h-16 bg-[#1D9BF0] rounded-t-[calc(1rem-2px)]
     mt-[-2px] mx-[-2px] border-2 border-b-0 border-[#78C7FD] overflow-hidden
@@ -24,7 +24,7 @@
       <nuxt-img src="/yuua-icon-v4.png" alt="yuua's icon"
                 class="h-[4.5rem] rounded-full border-4 border-white -mt-8"/>
       <div>
-        <p class="font-black text-xl text-[#0F1419]">yuuaHP</p>
+        <p class="font-black text-xl text-[#0F1419] group-hover:underline">yuuaHP</p>
         <p class="text-[#536471]">@yuuadev</p>
         <p class="text-xs text-[#A2AEB7]">
           Beginner Java & Kotlin developer.<br/>

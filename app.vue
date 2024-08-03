@@ -134,6 +134,8 @@
           <div class="flex flex-wrap gap-4">
             <GitHubAccount class="card-flex"/>
             <TwitterAccount class="card-flex"/>
+            <RedditAccount class="card-flex"/>
+            <SteamAccount class="card-flex"/>
           </div>
         </div>
       </div>
@@ -163,6 +165,8 @@ import Button from "~/components/Button.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import GitHubAccount from "~/components/accounts/GitHubAccount.vue";
 import TwitterAccount from "~/components/accounts/TwitterAccount.vue";
+import RedditAccount from "~/components/accounts/RedditAccount.vue";
+import SteamAccount from "~/components/accounts/SteamAccount.vue";
 </script>
 
 <style>
