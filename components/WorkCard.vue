@@ -4,15 +4,26 @@ const props = defineProps<{
   title: string;
   details: string;
   no_right_truncate?: boolean;
+  external_link?: string;
+  internal_link?: string;
 }>();
+
+function openLink() {
+  if (props.external_link) {
+    window.open(props.external_link, "_blank");
+  }
+}
 </script>
 
 <template>
-  <div>
+  <NuxtLink :to="internal_link">
     <div class="
-      !font-inter bg-white border-8 border-brown-primary rounded-2xl p-4 relative cursor-pointer group transition-all
-      hover:border-[10px] flat-shadow w-full h-[calc(100%-0.75rem)] inline-block select-none
-    ">
+      bg-white border-8 border-brown-primary rounded-2xl p-4 relative cursor-pointer group transition-all
+      hover:border-[10px] flat-shadow w-full aspect-[23/13] inline-block select-none
+    " @click="openLink">
+      <div v-if="external_link != null" class="absolute w-8 aspect-square rounded-lg bg-white z-40 right-2 top-2 flex justify-center items-center">
+        <font-awesome-icon icon="fa-duotone fa-solid fa-up-right-from-square" class="text-xl text-brown-primary" />
+      </div>
       <div class="absolute w-[calc(100%-2rem)] bottom-4 z-40">
         <h1 class="text-2xl font-black text-brown-primary text-outline">
           <font-awesome-icon :icon="'fad fa-' + icon" />
@@ -38,8 +49,7 @@ const props = defineProps<{
         <slot/>
       </div>
     </div>
-  </div>
-
+  </NuxtLink>
 </template>
 
 <style scoped>

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<div class="group cursor-pointer aspect-[5/3] bg-white rounded-2xl border-2 border-[#D0D7DE]">
+<div class="group cursor-pointer aspect-[23/13] bg-white rounded-2xl border-2 border-[#D0D7DE] inside">
   <div class="
     w-[calc(100%+4px)] h-4 bg-[#F0F0F0] rounded-t-[calc(1rem-2px)]
     mt-[-2px] mx-[-2px] border-2 border-b-0 border-[#D0D7DE] px-4
@@ -49,5 +49,7 @@
 </template>
 
 <style scoped>
-
+.inside {
+  transition: all 250ms ease-out;
+}
 </style>

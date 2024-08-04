@@ -16,8 +16,8 @@ const props = defineProps<{
     <p class="group mb-1 w-full">
       <font-awesome-icon v-if="!private" icon="fa-duotone fa-solid fa-book-bookmark" class="text-[#636c76] mr-2"/>
       <font-awesome-icon v-else icon="fa-duotone fa-solid fa-lock-keyhole" class="text-[#636c76] mr-2"/>
-      <span class="text-blue-500 group-hover:underline">{{ org }}/</span>
-      <span class="text-blue-500 group-hover:underline font-bold mr-2">{{ repo }}</span>
+      <span :data-private="private" class="text-[#636c76] data-[private=false]:text-blue-500 data-[private=false]:group-hover:underline">{{ org }}/</span>
+      <span :data-private="private" class="text-[#636c76] data-[private=false]:text-blue-500 data-[private=false]:group-hover:underline font-bold mr-2">{{ repo }}</span>
       <span class="text-xs font-bold text-[#636c76] py-1 px-2 border border-[#d0d7de] rounded-full">{{ private ? "Private" : "Public" }}</span>
     </p>
     <p class="text-[#636c76] text-xs mb-1">{{ description }}</p>

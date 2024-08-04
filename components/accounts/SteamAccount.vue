@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<div class="group cursor-pointer relative aspect-[5/3] rounded-2xl border-2 border-[#3E5F8B] steam-gradient">
+<div class="group cursor-pointer relative aspect-[23/13] rounded-2xl border-2 border-[#3E5F8B] steam-gradient inside">
   <div class="absolute h-16 flex items-center gap-x-2 px-4 z-20">
     <font-awesome-icon icon="fa-brands fa-steam" class="text-white text-3xl" />
     <p class="text-white font-black text-2xl">
@@ -31,5 +31,9 @@
 
 .picture-box-shadow {
   box-shadow: 0 6px 12px -1px rgba(0, 0, 0, 0.50);
+}
+
+.inside {
+  transition: all 250ms ease-out;
 }
 </style>

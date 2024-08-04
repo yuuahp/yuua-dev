@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<div class="group cursor-pointer relative aspect-[5/3] bg-white rounded-2xl border-2 border-[#D0D7DE]">
+<div class="group cursor-pointer relative aspect-[23/13] bg-white rounded-2xl border-2 border-[#D0D7DE] z-0 inside">
   <img src="~/assets/GitHubBranch.svg" alt="GitHub Branch" class="absolute right-[4.25rem] h-full z-0">
   <div class="h-8 w-full py-2 px-4">
     <p class="font-bold text-[#636C76] text-sm">
@@ -43,5 +43,7 @@
 </template>
 
 <style scoped>
-
+.inside {
+  transition: all 250ms ease-out;
+}
 </style>
