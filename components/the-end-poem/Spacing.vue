@@ -3,9 +3,7 @@
 </script>
 
 <template>
-  <p class="text-lg text-blue-500 leading-loose">
-    <slot/>
-  </p>
+<span class="h-4 mb-4"><br/></span>
 </template>
 
 <style scoped>

@@ -1,76 +1,38 @@
 <script setup lang="ts">
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-import {onMounted} from "vue";
 import GitHubAccount from "~/components/accounts/GitHubAccount.vue";
 
-// forked from https://codepen.io/nelsonr/pen/WNQaZPb
+const props = defineProps<{
+  link: string;
+}>();
 
-function map(value: number, originalMin: number, originalMax: number, min: number, max: number) {
-  return min + ((value - originalMin) * (max - min)) / (originalMax - originalMin);
+function openLink() {
+  window.open(props.link, '_blank')
 }
-
-let initialWidth = 0;
-let initialHeight = 0;
-
-function Card3D(card: Element, ev: MouseEvent) {
-  let mouseX = ev.offsetX;
-  let mouseY = ev.offsetY;
-  let rotateY = map(mouseX, 0, initialWidth, -5, 5);
-  let rotateX = map(mouseY, 0, initialHeight, 10, -10);
-  let brightness = map(mouseY, 0, initialHeight, 1.1, 0.9);
-
-  let inside = card.querySelector('.inside') as HTMLElement | null;
-
-  if (!inside) return;
-
-  inside.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  inside.style.filter = `brightness(${brightness})`;
-}
-
-onMounted(() => {
-  document.querySelectorAll('.card3d').forEach((card) => {
-    let inside = card.querySelector('.inside') as HTMLElement | null;
-
-    if (!inside) return;
-
-    initialWidth = inside.offsetWidth;
-    initialHeight = inside.offsetHeight;
-
-    card.addEventListener('mousemove', (ev) => {
-      Card3D(card, ev as MouseEvent);
-    });
-
-    card.addEventListener('mouseleave', (ev) => {
-      let inside = card.querySelector('.inside') as HTMLElement | null;
-
-      if (!inside) return;
-
-      inside.style.transform = 'rotateX(0deg) rotateY(0deg)';
-      inside.style.filter = 'brightness(1)';
-    });
-  });
-});
 </script>
 
 <template>
-  <div class="card3d group">
-    <slot name="card">
-      <GitHubAccount class="w-full mb-2"/>
+  <div class="card3d group/card">
+    <slot name="card" :openLink="openLink">
+      <GitHubAccount class="w-full mb-2" @click="openLink"/>
     </slot>
-    <p class="group-hover:ml-4 px-4 flex gap-x-2 items-center rounded-lg group-hover:bg-brown-primary w-fit transition-all">
-      <span class="font-bold text-brown-primary group-hover:text-brown-background">
+    <p class="
+      group-hover/card:ml-4 px-4 flex gap-x-2 items-center rounded-lg group-hover/card:bg-brown-primary
+      group/label cursor-pointer
+      w-fit transition-all" @click="openLink">
+      <span class="font-bold text-brown-primary group-hover/card:text-brown-background">
         <slot name="name">
           <font-awesome-icon icon="fa-brands fa-github"/>
           GitHub
         </slot>
       </span>
-      <span class="text-brown-secondary">
+      <span class="text-brown-secondary group-hover/label:underline">
         <slot name="catch_copy">
           Let's build from here
         </slot>
       </span>
       <font-awesome-icon icon="fa-duotone fa-solid fa-up-right-from-square"
-                         class="text-brown-primary group-hover:text-brown-background"/>
+                         class="text-brown-primary group-hover/card:text-brown-background"/>
     </p>
   </div>
 </template>

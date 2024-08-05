@@ -16,7 +16,53 @@ onMounted(() => {
   } else {
     console.error("main is null");
   }
+
+  document.querySelectorAll('.card3d').forEach((card) => {
+    let inside = card.querySelector('.inside') as HTMLElement | null;
+
+    if (!inside) return;
+
+    initialWidth = inside.offsetWidth;
+    initialHeight = inside.offsetHeight;
+
+    card.addEventListener('mousemove', (ev) => {
+      Card3D(card, ev as MouseEvent);
+    });
+
+    card.addEventListener('mouseleave', (ev) => {
+      let inside = card.querySelector('.inside') as HTMLElement | null;
+
+      if (!inside) return;
+
+      inside.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      inside.style.filter = 'brightness(1)';
+    });
+  });
 })
+
+// forked from https://codepen.io/nelsonr/pen/WNQaZPb
+
+function map(value: number, originalMin: number, originalMax: number, min: number, max: number) {
+  return min + ((value - originalMin) * (max - min)) / (originalMax - originalMin);
+}
+
+let initialWidth = 0;
+let initialHeight = 0;
+
+function Card3D(card: Element, ev: MouseEvent) {
+  let mouseX = ev.offsetX;
+  let mouseY = ev.offsetY;
+  let rotateY = map(mouseX, 0, initialWidth, -5, 5);
+  let rotateX = map(mouseY, 0, initialHeight, 10, -10);
+  let brightness = map(mouseY, 0, initialHeight, 1.1, 0.9);
+
+  let inside = card.querySelector('.inside') as HTMLElement | null;
+
+  if (!inside) return;
+
+  inside.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  inside.style.filter = `brightness(${brightness})`;
+}
 </script>
 
 <template>
@@ -29,7 +75,7 @@ onMounted(() => {
         <div class="invisible absolute w-[calc(100%-1rem)] h-2 -bottom-3 left-3 bg-[#2f2833] rounded-b-2xl"/>
         <div class="invisible absolute w-2 h-[calc(100%-1rem)] top-3 -right-3 bg-[#2f2833] rounded-r-2xl"/>
       </div>
-      <div class="text-brown-primary pt-8">
+      <div class="text-brown-primary pt-4">
         <h1 class="text-4xl font-black mb-4">
           Hello, I’m yuua
           <font-awesome-icon icon="fad fa-solid fa-hand-wave"/>
@@ -149,43 +195,43 @@ onMounted(() => {
         <font-awesome-icon icon="fad fa-thumbs-up"/>
       </h1>
       <div class="flex flex-wrap gap-x-4 gap-y-6 mb-6">
-        <AccountDisplay class="card-flex">
+        <AccountDisplay class="card-flex" link="https://github.com/yuuahp">
           <!--GitHub by default-->
         </AccountDisplay>
-        <AccountDisplay class="card-flex">
-          <template v-slot:card>
-            <TwitterAccount class="inside w-full mb-2"/>
+        <AccountDisplay class="card-flex" link="https://twitter.com/yuuadev">
+          <template #card="slot">
+            <TwitterAccount class="inside w-full mb-2" @click="slot.openLink"/>
           </template>
-          <template v-slot:name>
+          <template #name>
             <font-awesome-icon icon="fa-brands fa-twitter"/>
             Twitter
             <font-awesome-icon icon="fa-brands fa-x-twitter"/>
           </template>
-          <template v-slot:catch_copy>
+          <template #catch_copy>
             Happening now
           </template>
         </AccountDisplay>
-        <AccountDisplay class="card-flex">
-          <template v-slot:card>
-            <RedditAccount class="inside w-full mb-2"/>
+        <AccountDisplay class="card-flex" link="https://www.reddit.com/user/yuuaHP/">
+          <template #card="slot">
+            <RedditAccount class="inside w-full mb-2" @click="slot.openLink()"/>
           </template>
-          <template v-slot:name>
+          <template #name>
             <font-awesome-icon icon="fa-brands fa-reddit"/>
             Reddit
           </template>
-          <template v-slot:catch_copy>
+          <template #catch_copy>
             The front page of the internet
           </template>
         </AccountDisplay>
-        <AccountDisplay class="card-flex">
-          <template v-slot:card>
-            <SteamAccount class="inside w-full mb-2"/>
+        <AccountDisplay class="card-flex" link="https://steamcommunity.com/id/yuuahp/">
+          <template #card="slot">
+            <SteamAccount class="inside w-full mb-2" @click="slot.openLink()"/>
           </template>
-          <template v-slot:name>
+          <template #name>
             <font-awesome-icon icon="fa-brands fa-steam"/>
             Steam
           </template>
-          <template v-slot:catch_copy>
+          <template #catch_copy>
             Welcome to Steam
           </template>
         </AccountDisplay>
@@ -200,37 +246,37 @@ onMounted(() => {
       <div class="flex flex-col gap-y-6">
         <FAQ icon="person-circle-question"/>
         <FAQ icon="square-code">
-          <template v-slot:question>
+          <template #question>
             What languages do you prefer?
           </template>
-          <template v-slot:answer>
+          <template #answer>
             I love working with <span class="font-bold">Kotlin</span>, Java, Typescript and JavaScript.
           </template>
         </FAQ>
         <FAQ icon="boxes-stacked">
-          <template v-slot:question>
+          <template #question>
             And tech stacks?
           </template>
-          <template v-slot:answer>
+          <template #answer>
             I usually work with <span class="font-bold">Nuxt.js</span>, <span class="font-bold">Tailwind</span>, <span
               class="font-bold">Ktor</span> and Firebase.
           </template>
         </FAQ>
 
         <FAQ icon="server">
-          <template v-slot:question>
+          <template #question>
             Are you an Android developer?
           </template>
-          <template v-slot:answer>
+          <template #answer>
             Nope, I'm a <span class="font-bold">server-side</span> Kotlin developer.
           </template>
         </FAQ>
 
         <FAQ icon="envelope-open-text">
-          <template v-slot:question>
+          <template #question>
             What's your email?
           </template>
-          <template v-slot:answer>
+          <template #answer>
             You can reach me at
             <a class="font-bold underline text-pink-400" href="mailto:inbox@yuua.dev">inbox@yuua.dev</a>.
             Feel free to drop me a message anytime!
@@ -238,10 +284,10 @@ onMounted(() => {
         </FAQ>
 
         <FAQ icon="text-size">
-          <template v-slot:question>
+          <template #question>
             Why not capitalize the "y" in "yuua"? Is it a typo?
           </template>
-          <template v-slot:answer>
+          <template #answer>
             It's intentional. I think <span class="font-bold">"yuua"</span> looks more balanced than <span
               class="font-bold">"Yuua"</span>. I always use <span class="font-bold">"yuua"</span> (or <span
               class="font-bold">"yuuaHP"</span>) as my handle name online.
@@ -249,10 +295,10 @@ onMounted(() => {
         </FAQ>
 
         <FAQ icon="question">
-          <template v-slot:question>
+          <template #question>
             What does "HP" in "yuuaHP" stand for?
           </template>
-          <template v-slot:answer>
+          <template #answer>
             Honestly, I don't know! It's just a suffix from my first-ever email address.
           </template>
         </FAQ>

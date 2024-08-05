@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <p class="text-lg text-green-500">
+  <p class="text-lg text-green-500 leading-loose">
     <slot/>
   </p>
 </template>
