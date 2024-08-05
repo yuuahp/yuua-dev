@@ -12,8 +12,8 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="bg-white border border-[#d0d7de] rounded-lg p-4 font-inter">
-    <p class="group mb-1 w-full">
+  <div class="bg-white border border-[#d0d7de] rounded-lg p-4 font-inter overflow-hidden">
+    <p class="group mb-1">
       <font-awesome-icon v-if="!private" icon="fa-duotone fa-solid fa-book-bookmark" class="text-[#636c76] mr-2"/>
       <font-awesome-icon v-else icon="fa-duotone fa-solid fa-lock-keyhole" class="text-[#636c76] mr-2"/>
       <span :data-private="private" class="text-[#636c76] data-[private=false]:text-blue-500 data-[private=false]:group-hover:underline">{{ org }}/</span>

@@ -8,14 +8,14 @@ import AccountDisplay from "~/components/accounts/AccountDisplay.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 onMounted(() => {
-  // scroll to top
-  let main = document.querySelector("#main");
-
-  if (main) {
-    main.scrollTop = 0;
-  } else {
-    console.error("main is null");
-  }
+  // // scroll to top
+  // let main = document.querySelector("#main");
+  //
+  // if (main) {
+  //   main.scrollTop = 0;
+  // } else {
+  //   console.error("main is null");
+  // }
 
   document.querySelectorAll('.card3d').forEach((card) => {
     let inside = card.querySelector('.inside') as HTMLElement | null;
@@ -66,9 +66,9 @@ function Card3D(card: Element, ev: MouseEvent) {
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-16 pt-16">
+  <div class="flex flex-col gap-y-16 pt-8 md:pt-16">
     <!-- intro -->
-    <div id="intro" class="flex gap-x-16 mt-16 mb-8">
+    <div ref="intro" class="flex flex-col sm:flex-row items-center sm:items-start gap-x-16 gap-y-4 mt-16 mb-8">
       <div class="w-52 h-fit relative z-10 rounded-t-2xl photo-shadow-corner before:bg-brown-background">
         <p class="text-center bg-[#2f2833] text-[#f5ede9] rounded-t-2xl font-jb-mono pt-1">yuua-icon-v4.png</p>
         <nuxt-img class="w-full rounded-b-2xl" src="/yuua-icon-v4.png"/>
@@ -76,17 +76,17 @@ function Card3D(card: Element, ev: MouseEvent) {
         <div class="invisible absolute w-2 h-[calc(100%-1rem)] top-3 -right-3 bg-[#2f2833] rounded-r-2xl"/>
       </div>
       <div class="text-brown-primary pt-4">
-        <h1 class="text-4xl font-black mb-4">
+        <h1 class="text-3xl sm:text-4xl font-black mb-4 text-center sm:text-start">
           Hello, I’m yuua
           <font-awesome-icon icon="fad fa-solid fa-hand-wave"/>
         </h1>
-        <p class="pl-4 mb-4">
+        <p class="sm:pl-4 mb-4">
           A hobby developer who LOVES <span class="font-black kotlin-gradient">Kotlin</span>.<br>
           I learn and develop by letting my curiosity lead the way.
         </p>
-        <div class="pl-4">
+        <div class="sm:pl-4">
           <p class="mb-2">What are you looking for today?</p>
-          <div class="flex gap-x-2 mb-2 flex-wrap">
+          <div class="flex gap-2 mb-2 flex-wrap">
             <!--TODO: Always-visible navigation on side-->
             <Button icon="pen-ruler" @click="$refs.works.scrollIntoView({ behavior: 'smooth'})">
               Works & Projects
@@ -106,45 +106,46 @@ function Card3D(card: Element, ev: MouseEvent) {
     </div>
     <!--works-->
     <div ref="works" class="scroll-mt-16">
-      <h1 class="text-brown-primary text-3xl font-black mb-4">
+      <h1 class="text-brown-primary text-2xl sm:text-3xl font-black mb-2">
         Works & Projects
         <font-awesome-icon icon="fad fa-pen-ruler"/>
       </h1>
-      <div class="flex flex-wrap gap-4">
-        <WorkCard class="card-flex"
+      <p class="pl-4 text-brown-secondary mb-4">Here is my works, projects and contributions!</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 place-items-center">
+        <WorkCard class="w-full max-w-[30rem]"
                   icon="volume-high"
                   title="VCSpeaker.kt"
                   details="Text channels, now with voice"
                   external_link="https://github.com/jaoafa/VCSpeaker.kt"
                   no_right_truncate>
-          <GitHubRepo class="w-full h-full"
+          <GitHubRepo class="h-full w-full"
                       org="jaoafa" repo="VCSpeaker.kt"
                       description="🔊 Text channel, now with voice"
                       language="Kotlin" language_color="#a97bff"/>
         </WorkCard>
-        <WorkCard class="card-flex"
+        <WorkCard class="w-full max-w-[30rem]"
                   icon="dice-d20"
                   title="Fortune"
                   details="Play TRPG without leaving Discord"
                   external_link="https://github.com/JourneyHQ/fortune"
                   no_right_truncate>
-          <GitHubRepo class="w-full h-full"
+          <GitHubRepo class="h-full w-full"
                       org="JourneyHQ" repo="fortune"
                       description="🎲 Play TRPG without leaving Discord"
                       language="Kotlin" language_color="#a97bff"/>
         </WorkCard>
-        <WorkCard class="card-flex"
+        <WorkCard class="w-full max-w-[30rem]"
                   icon="hexagon-image"
                   title="Dynmap Processor"
                   details="Dynmap image annotator CLI"
                   external_link="https://github.com/JourneyHQ/dynmap-processor"
                   no_right_truncate>
-          <GitHubRepo class="w-full h-full"
+          <GitHubRepo class="h-full w-full"
                       org="JourneyHQ" repo="dynmap-processor"
                       description="🧭 Automated edit & annotation for Dynmap images"
                       language="Kotlin" language_color="#a97bff"/>
         </WorkCard>
-        <WorkCard class="card-flex"
+        <WorkCard class="w-full max-w-[30rem]"
                   icon="school"
                   title="School Festival '22"
                   details="Online culture festival website" no_right_truncate>
@@ -160,7 +161,7 @@ function Card3D(card: Element, ev: MouseEvent) {
             </div>
           </div>
         </WorkCard>
-        <WorkCard class="card-flex"
+        <WorkCard class="w-full max-w-[30rem]"
                   icon="graduation-cap"
                   title="UniDB"
                   details="Universities' open-campus data website" no_right_truncate>
@@ -176,7 +177,7 @@ function Card3D(card: Element, ev: MouseEvent) {
             </div>
           </div>
         </WorkCard>
-        <WorkCard class="card-flex"
+        <WorkCard class="w-full max-w-[30rem]"
                   icon="language"
                   title="終わりの詩"
                   details="Translation of The End Poem by Julian Gough"
@@ -190,15 +191,16 @@ function Card3D(card: Element, ev: MouseEvent) {
     </div>
     <!--socials (GitHub, Twitter/X, Reddit, Steam, Email)-->
     <div ref="socials" class="scroll-mt-16">
-      <h1 class="text-brown-primary text-3xl font-black mb-4">
+      <h1 class="text-brown-primary text-2xl sm:text-3xl font-black mb-2">
         Socials
         <font-awesome-icon icon="fad fa-thumbs-up"/>
       </h1>
-      <div class="flex flex-wrap gap-x-4 gap-y-6 mb-6">
-        <AccountDisplay class="card-flex" link="https://github.com/yuuahp">
+      <p class="pl-4 text-brown-secondary mb-4">My accounts on social networks.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 place-items-center gap-x-4 gap-y-6 mb-6">
+        <AccountDisplay class="w-full max-w-[24rem]" link="https://github.com/yuuahp">
           <!--GitHub by default-->
         </AccountDisplay>
-        <AccountDisplay class="card-flex" link="https://twitter.com/yuuadev">
+        <AccountDisplay class="w-full max-w-[24rem]" link="https://twitter.com/yuuadev">
           <template #card="slot">
             <TwitterAccount class="inside w-full mb-2" @click="slot.openLink"/>
           </template>
@@ -211,7 +213,7 @@ function Card3D(card: Element, ev: MouseEvent) {
             Happening now
           </template>
         </AccountDisplay>
-        <AccountDisplay class="card-flex" link="https://www.reddit.com/user/yuuaHP/">
+        <AccountDisplay class="w-full max-w-[24rem]" link="https://www.reddit.com/user/yuuaHP">
           <template #card="slot">
             <RedditAccount class="inside w-full mb-2" @click="slot.openLink()"/>
           </template>
@@ -223,7 +225,7 @@ function Card3D(card: Element, ev: MouseEvent) {
             The front page of the internet
           </template>
         </AccountDisplay>
-        <AccountDisplay class="card-flex" link="https://steamcommunity.com/id/yuuahp/">
+        <AccountDisplay class="w-full max-w-[24rem]" link="https://steamcommunity.com/id/yuuahp">
           <template #card="slot">
             <SteamAccount class="inside w-full mb-2" @click="slot.openLink()"/>
           </template>
@@ -239,10 +241,11 @@ function Card3D(card: Element, ev: MouseEvent) {
     </div>
     <!--FAQ-->
     <div ref="faq" class="scroll-mt-16">
-      <h1 class="text-brown-primary text-3xl font-black mb-6">
+      <h1 class="text-brown-primary text-2xl sm:text-3xl font-black mb-2">
         <span class="text-lg text-brown-secondary">(not so)</span> Frequently Asked Questions
         <font-awesome-icon icon="fad fa-messages-question"/>
       </h1>
+      <p class="pl-4 text-brown-secondary mb-4">Collection of questions people often* ask me (YMMV)</p>
       <div class="flex flex-col gap-y-6">
         <FAQ icon="person-circle-question"/>
         <FAQ icon="square-code">
@@ -337,7 +340,7 @@ function Card3D(card: Element, ev: MouseEvent) {
 }
 
 .card-flex {
-  @apply w-[calc(50%-.5rem)];
+  @apply w-[24rem] sm:w-[calc(50%-.5rem)];
 }
 
 .trapezoid {

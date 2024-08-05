@@ -5,16 +5,16 @@ import Indent from "~/components/the-end-poem/Indent.vue";
 
 const player = ref<string>("yuuaHP");
 
-onMounted(() => {
-  // scroll to top
-  let main = document.querySelector("#main");
-
-  if (main) {
-    main.scrollTop = 0;
-  } else {
-    console.error("main is null");
-  }
-});
+// onMounted(() => {
+//   // scroll to top
+//   let main = document.querySelector("#main");
+//
+//   if (main) {
+//     main.scrollTop = 0;
+//   } else {
+//     console.error("main is null");
+//   }
+// });
 </script>
 
 <template>
@@ -42,7 +42,7 @@ onMounted(() => {
       </Green>
 
       <Blue>
-        このプレイヤーが気に入った。ゲームをよく遊んでくれたし、最後まで諦めなかった。
+        私はこのプレイヤーが気に入った。ゲームをよく遊んでくれたし、最後まで諦めなかった。
       </Blue>
 
       <Green>

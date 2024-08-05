@@ -9,7 +9,8 @@ function openLink() {
 </script>
 
 <template>
-  <div class="group cursor-pointer aspect-[23/13] rounded-2xl inside"
+  <!-- mini version - sm - normal - md - mini version - lg - normal-->
+  <div class="group cursor-pointer aspect-[23/13] rounded-2xl inside overflow-hidden"
        @click="openLink">
     <slot/>
   </div>

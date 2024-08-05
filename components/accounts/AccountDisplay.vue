@@ -19,14 +19,14 @@ function openLink() {
     <p class="
       group-hover/card:ml-4 px-4 flex gap-x-2 items-center rounded-lg group-hover/card:bg-brown-primary
       group/label cursor-pointer
-      w-fit transition-all" @click="openLink">
-      <span class="font-bold text-brown-primary group-hover/card:text-brown-background">
+      w-fit max-w-[calc(100%-1rem)] transition-all" @click="openLink">
+      <span class="font-bold text-brown-primary group-hover/card:text-brown-background text-nowrap">
         <slot name="name">
           <font-awesome-icon icon="fa-brands fa-github"/>
           GitHub
         </slot>
       </span>
-      <span class="text-brown-secondary group-hover/label:underline">
+      <span class="text-brown-secondary group-hover/label:underline truncate">
         <slot name="catch_copy">
           Let's build from here
         </slot>

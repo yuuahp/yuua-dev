@@ -1,15 +1,25 @@
 <template>
-  <div class="relative h-dvh w-dvw bg-white pt-16 font-inter">
-    <div
-        class="absolute left-[calc(50%-25.5rem+3rem)] top-[calc(4.5rem+1.5rem)] w-[52rem] aspect-[4/3] bg-[#F0EFED] rounded-[2rem]"></div>
-    <div
-        class="absolute left-[calc(50%-25.5rem)] top-[4.5rem] w-[52rem] aspect-[4/3] bg-brown-depth rounded-[1.75rem]"></div>
+  <div class="relative h-dvh w-dvw bg-white pt-16 font-inter overflow-hidden">
+    <div class="
+      hidden md:block
+      absolute md:left-[calc(50%-24.5rem+3rem)] lg:left-[calc(50%-25.5rem+3rem)] top-[calc(4.5rem+1.5rem)]
+      w-full md:w-[48rem] lg:w-[52rem] md:aspect-[4/3] bg-[#F0EFED] rounded-[2rem]
+    "></div>
 
-    <div
-        class="mx-auto w-[52rem] aspect-[4/3] p-8 border-8 border-brown-primary bg-brown-background rounded-3xl relative">
+    <div class="
+      hidden md:block
+      absolute md:left-[calc(50%-23.5rem)] lg:left-[calc(50%-25.5rem)] top-[4.5rem]
+      w-full md:w-[48rem] lg:w-[52rem] md:aspect-[4/3] bg-brown-depth rounded-[1.75rem]
+    "></div>
+
+    <div class="mx-auto
+          w-full md:w-[48rem] lg:w-[52rem]
+          h-full md:h-auto
+          md:aspect-[4/3]
+          p-8 border-t-8 md:border-8 border-brown-primary bg-brown-background md:rounded-3xl relative">
       <!-- reflection -->
       <div
-          class="absolute top-0 left-0 w-full h-full rounded-2xl overflow-hidden border-white/20 border-4 border-t-0 pointer-events-none z-50">
+          class="absolute top-0 left-0 w-full h-full md:rounded-2xl overflow-hidden border-white/20 border-4 border-t-0 pointer-events-none z-50">
         <div class="absolute z-50 -left-64 top-16 w-[200%] h-48 origin-center -rotate-[30deg]">
           <div class="w-full h-3/5 bg-white/20"></div>
           <div class="w-full h-1/5"></div>
@@ -18,12 +28,73 @@
       </div>
       <div id="main" class="
         absolute top-0 left-0 w-full h-full p-8
-        hide-scrollbar overflow-y-scroll rounded-2xl
+        hide-scrollbar overflow-y-scroll md:rounded-2xl
       ">
-        <NuxtPage :transition="{
-          name: 'page',
-          mode: 'out-in'
-        }"/>
+        <!-- TODO: header & return to main page for each subpage -->
+        <NuxtLayout>
+          <NuxtLoadingIndicator/>
+          <NuxtPage :transition="{
+            name: 'page',
+            mode: 'out-in'
+          }"/>
+        </NuxtLayout>
+
+        <div class="bg-brown-primary text-brown-background -mx-8 -mb-8 mt-16 p-8">
+          <div class="flex justify-between items-center mb-4">
+            <a href="/" class="inline-block">
+              <img src="~/assets/yuua-logo-dark.svg" alt="yuua's logo" class="h-12"/>
+            </a>
+            <Button icon="up-to-line" dark @click="scrollToTop">
+              Return to Top
+            </Button>
+          </div>
+          <div class="mb-2">
+            <p class="font-bold">Socials</p>
+            <div class="text-brown-secondary flex gap-x-4 pl-4">
+              <a href="https://github.com/yuuahp" class="hover:underline">
+                <font-awesome-icon icon="fa-brands fa-github"/>
+                GitHub
+              </a>
+              <a href="https://twitter.com/yuuadev" class="hover:underline">
+                <font-awesome-icon icon="fa-brands fa-twitter"/>
+                Twitter
+              </a>
+              <a href="https://www.reddit.com/user/yuuaHP" class="hover:underline">
+                <font-awesome-icon icon="fa-brands fa-reddit"/>
+                Reddit
+              </a>
+              <a href="https://steamcommunity.com/id/yuuahp" class="hover:underline">
+                <font-awesome-icon icon="fa-brands fa-steam"/>
+                Steam
+              </a>
+            </div>
+          </div>
+          <div class="mb-6">
+            <p class="font-bold">Contact</p>
+            <div class="text-brown-secondary flex gap-x-2 pl-4">
+              <p class="px-2 bg-brown-depth rounded-lg text-brown-background">
+                inbox@yuua.dev
+                <font-awesome-icon v-if="showCopySuccess"
+                                   icon="fa-duotone fa-solid fa-check"
+                                   class="text-brown-secondary cursor-pointer ml-2"/>
+                <font-awesome-icon v-else
+                                   icon="fa-duotone fa-solid fa-copy"
+                                   class="text-brown-secondary cursor-pointer ml-2"
+                                   @click="copyMail"/>
+
+              </p>
+              <a href="mailto:inbox@yuua.dev" class="hover:underline">
+                Send Mail
+                <font-awesome-icon icon="fa-duotone fa-solid fa-paper-plane" />
+              </a>
+            </div>
+          </div>
+
+          <p class="text-brown-secondary text-right">
+            <font-awesome-icon icon="fa-duotone fa-solid fa-cookie-bite"/>
+            This website is cookie-less
+          </p>
+        </div>
       </div>
       <!-- card holder -->
       <div class="w-full -mt-8 relative z-[90]">
@@ -47,6 +118,19 @@
 </template>
 
 <script setup lang="ts">
+import Button from "~/components/Button.vue";
+
+const showCopySuccess = ref(false);
+
+function copyMail() {
+  navigator.clipboard.writeText('inbox@yuua.dev');
+  showCopySuccess.value = true;
+  setTimeout(() => showCopySuccess.value = false, 2000);
+}
+
+function scrollToTop() {
+  document.querySelector('#main')?.scrollTo({ top: 0, behavior: 'smooth' });
+}
 </script>
 
 <style>
