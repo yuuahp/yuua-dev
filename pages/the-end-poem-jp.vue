@@ -15,13 +15,17 @@ const player = ref<string>("yuuaHP");
 //     console.error("main is null");
 //   }
 // });
+
+definePageMeta({
+  layout: "gallery",
+})
 </script>
 
 <template>
   <div class="!font-noto-sans pt-8">
     <div class="mb-8 flex gap-x-4 items-end">
       <h1 class="text-brown-primary text-4xl inline-block">終わりの詩</h1>
-      <p class="text-xl text-brown-secondary">by Julian Gough</p>
+      <p class="text-xl text-brown-primary">by Julian Gough</p>
       <p class="text-xl text-brown-secondary">Translated by yuua</p>
     </div>
     <div class="flex flex-col gap-y-4">

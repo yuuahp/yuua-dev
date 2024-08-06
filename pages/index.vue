@@ -66,9 +66,11 @@ function Card3D(card: Element, ev: MouseEvent) {
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-16 pt-8 md:pt-16">
+  <div class="relative flex flex-col gap-y-16">
+
+    <div class="h-12 md:h-[5rem] -mb-16"></div>
     <!-- intro -->
-    <div ref="intro" class="flex flex-col sm:flex-row items-center sm:items-start gap-x-16 gap-y-4 mt-16 mb-8">
+    <div ref="intro" class="flex flex-col sm:flex-row items-center sm:items-start gap-x-16 gap-y-4 mb-8">
       <div class="w-52 h-fit relative z-10 rounded-t-2xl photo-shadow-corner before:bg-brown-background">
         <p class="text-center bg-[#2f2833] text-[#f5ede9] rounded-t-2xl font-jb-mono pt-1">yuua-icon-v4.png</p>
         <nuxt-img class="w-full rounded-b-2xl" src="/yuua-icon-v4.png"/>
@@ -87,7 +89,6 @@ function Card3D(card: Element, ev: MouseEvent) {
         <div class="sm:pl-4">
           <p class="mb-2">What are you looking for today?</p>
           <div class="flex gap-2 mb-2 flex-wrap">
-            <!--TODO: Always-visible navigation on side-->
             <Button icon="pen-ruler" @click="$refs.works.scrollIntoView({ behavior: 'smooth'})">
               Works & Projects
             </Button>
@@ -105,7 +106,7 @@ function Card3D(card: Element, ev: MouseEvent) {
       </div>
     </div>
     <!--works-->
-    <div ref="works" class="scroll-mt-16">
+    <div id="works" ref="works" class="scroll-mt-16">
       <h1 class="text-brown-primary text-2xl sm:text-3xl font-black mb-2">
         Works & Projects
         <font-awesome-icon icon="fad fa-pen-ruler"/>
@@ -190,7 +191,7 @@ function Card3D(card: Element, ev: MouseEvent) {
       </div>
     </div>
     <!--socials (GitHub, Twitter/X, Reddit, Steam, Email)-->
-    <div ref="socials" class="scroll-mt-16">
+    <div id="socials" ref="socials" class="scroll-mt-16">
       <h1 class="text-brown-primary text-2xl sm:text-3xl font-black mb-2">
         Socials
         <font-awesome-icon icon="fad fa-thumbs-up"/>
@@ -202,7 +203,7 @@ function Card3D(card: Element, ev: MouseEvent) {
         </AccountDisplay>
         <AccountDisplay class="w-full max-w-[24rem]" link="https://twitter.com/yuuadev">
           <template #card="slot">
-            <TwitterAccount class="inside w-full mb-2" @click="slot.openLink"/>
+            <TwitterAccount class="inside w-full mb-2" :link="slot.link"/>
           </template>
           <template #name>
             <font-awesome-icon icon="fa-brands fa-twitter"/>
@@ -215,7 +216,7 @@ function Card3D(card: Element, ev: MouseEvent) {
         </AccountDisplay>
         <AccountDisplay class="w-full max-w-[24rem]" link="https://www.reddit.com/user/yuuaHP">
           <template #card="slot">
-            <RedditAccount class="inside w-full mb-2" @click="slot.openLink()"/>
+            <RedditAccount class="inside w-full mb-2" :link="slot.link"/>
           </template>
           <template #name>
             <font-awesome-icon icon="fa-brands fa-reddit"/>
@@ -227,7 +228,7 @@ function Card3D(card: Element, ev: MouseEvent) {
         </AccountDisplay>
         <AccountDisplay class="w-full max-w-[24rem]" link="https://steamcommunity.com/id/yuuahp">
           <template #card="slot">
-            <SteamAccount class="inside w-full mb-2" @click="slot.openLink()"/>
+            <SteamAccount class="inside w-full mb-2" :link="slot.link"/>
           </template>
           <template #name>
             <font-awesome-icon icon="fa-brands fa-steam"/>
@@ -240,7 +241,7 @@ function Card3D(card: Element, ev: MouseEvent) {
       </div>
     </div>
     <!--FAQ-->
-    <div ref="faq" class="scroll-mt-16">
+    <div id="faq" ref="faq" class="scroll-mt-16">
       <h1 class="text-brown-primary text-2xl sm:text-3xl font-black mb-2">
         <span class="text-lg text-brown-secondary">(not so)</span> Frequently Asked Questions
         <font-awesome-icon icon="fad fa-messages-question"/>
@@ -261,8 +262,8 @@ function Card3D(card: Element, ev: MouseEvent) {
             And tech stacks?
           </template>
           <template #answer>
-            I usually work with <span class="font-bold">Nuxt.js</span>, <span class="font-bold">Tailwind</span>, <span
-              class="font-bold">Ktor</span> and Firebase.
+            I usually work with <span class="font-bold">Nuxt.js</span>, <span class="font-bold">Tailwind</span>,
+            <span class="font-bold">Ktor</span> and Firebase.
           </template>
         </FAQ>
 

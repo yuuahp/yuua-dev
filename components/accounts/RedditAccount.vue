@@ -1,6 +1,9 @@
 <script setup lang="ts">
-
 import AccountCard from "~/components/accounts/AccountCard.vue";
+
+const props = defineProps<{
+  link: string;
+}>();
 
 const mini = ref(false)
 const micro = ref(false)
@@ -22,7 +25,7 @@ onUnmounted(() => window.removeEventListener('resize', onResize))
 </script>
 
 <template>
-<AccountCard link="" class="bg-white border-2 border-[#D0D7DE]">
+<AccountCard :link="link" class="bg-white border-2 border-[#D0D7DE]">
   <div class="
     w-[calc(100%+4px)] h-4 bg-[#F0F0F0] rounded-t-[calc(1rem-2px)]
     mt-[-2px] mx-[-2px] border-2 border-b-0 border-[#D0D7DE] px-4

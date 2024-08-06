@@ -4,9 +4,9 @@ const SCROLL_CONTAINER_ID = 'main';
 const scrollPositions = {};
 
 export default <RouterConfig>{
+    // from https://github.com/vuejs/vue-router/issues/1187#issuecomment-1255985237
     scrollBehavior: (to, from, savedPosition) => {
-        console.log(scrollPositions)
-        if (to.fullPath === from.fullPath) {
+        if (to.name === from.name) {
             return;
         }
 

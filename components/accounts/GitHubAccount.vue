@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import AccountCard from "~/components/accounts/AccountCard.vue";
 
+const props = defineProps<{
+  link: string;
+}>();
+
 const mini = ref(false)
 const micro = ref(false)
 
@@ -21,7 +25,7 @@ onUnmounted(() => window.removeEventListener('resize', onResize))
 </script>
 
 <template>
-  <AccountCard link="https://github.com/yuuahp" class="relative bg-white border-2 border-[#D0D7DE] z-0">
+  <AccountCard :link="link" class="relative bg-white border-2 border-[#D0D7DE] z-0">
     <img src="~/assets/GitHubBranch.svg" alt="GitHub Branch" :class="'absolute h-full z-0 ' + (mini ? 'right-8' : 'right-[4.25rem]')">
     <div :class="'w-full px-4 ' + (micro ? 'py-1 h-6' : 'py-2 h-8')">
       <p :class="'font-bold text-[#636C76] ' + (micro ? 'text-xs' : 'text-sm')">

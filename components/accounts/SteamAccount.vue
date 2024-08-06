@@ -3,6 +3,10 @@
 import AccountCard from "~/components/accounts/AccountCard.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
+const props = defineProps<{
+  link: string;
+}>();
+
 const mini = ref(false)
 const micro = ref(false)
 
@@ -23,7 +27,7 @@ onUnmounted(() => window.removeEventListener('resize', onResize))
 </script>
 
 <template>
-<AccountCard link="" class="relative border-2 border-[#3E5F8B] steam-gradient">
+<AccountCard :link="link" class="relative border-2 border-[#3E5F8B] steam-gradient">
   <div class="absolute h-16 flex items-center gap-x-2 px-4 z-20">
     <font-awesome-icon icon="fa-brands fa-steam" class="text-white text-3xl" />
     <p class="text-white font-black text-2xl">

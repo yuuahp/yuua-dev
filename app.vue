@@ -8,7 +8,7 @@
 
     <div class="
       hidden md:block
-      absolute md:left-[calc(50%-23.5rem)] lg:left-[calc(50%-25.5rem)] top-[4.5rem]
+      absolute md:left-[calc(50%-24rem+.5rem)] lg:left-[calc(50%-26rem+.5rem)] top-[4.5rem]
       w-full md:w-[48rem] lg:w-[52rem] md:aspect-[4/3] bg-brown-depth rounded-[1.75rem]
     "></div>
 
@@ -26,78 +26,74 @@
           <div class="w-full h-1/5 bg-white/20"></div>
         </div>
       </div>
-      <div id="main" class="
-        absolute top-0 left-0 w-full h-full p-8
-        hide-scrollbar overflow-y-scroll md:rounded-2xl
+      <div class="
+        absolute top-0 left-0 w-full h-full
       ">
-        <!-- TODO: header & return to main page for each subpage -->
         <NuxtLayout>
           <NuxtLoadingIndicator/>
-          <NuxtPage :transition="{
-            name: 'page',
-            mode: 'out-in'
-          }"/>
+          <NuxtPage/>
+          <div class="bg-brown-primary text-brown-background -mb-8 -mx-8 mt-16 p-8">
+            <div class="flex justify-between items-center mb-4">
+              <a href="/" class="inline-block">
+                <img src="~/assets/yuua-logo-dark.svg" alt="yuua's logo" class="h-12"/>
+              </a>
+              <Button icon="up-to-line" dark @click="scrollToTop">
+                Return to Top
+              </Button>
+            </div>
+            <div class="mb-2">
+              <p class="font-bold">Socials</p>
+              <div class="text-brown-secondary flex gap-x-4 pl-4">
+                <a href="https://github.com/yuuahp" class="hover:underline">
+                  <font-awesome-icon icon="fa-brands fa-github"/>
+                  GitHub
+                </a>
+                <a href="https://twitter.com/yuuadev" class="hover:underline">
+                  <font-awesome-icon icon="fa-brands fa-twitter"/>
+                  Twitter
+                </a>
+                <a href="https://www.reddit.com/user/yuuaHP" class="hover:underline">
+                  <font-awesome-icon icon="fa-brands fa-reddit"/>
+                  Reddit
+                </a>
+                <a href="https://steamcommunity.com/id/yuuahp" class="hover:underline">
+                  <font-awesome-icon icon="fa-brands fa-steam"/>
+                  Steam
+                </a>
+              </div>
+            </div>
+            <div class="mb-6">
+              <p class="font-bold">Contact</p>
+              <div class="text-brown-secondary flex gap-x-2 pl-4">
+                <p class="px-2 bg-brown-depth rounded-lg text-brown-background">
+                  inbox@yuua.dev
+                  <font-awesome-icon v-if="showCopySuccess"
+                                     icon="fa-duotone fa-solid fa-check"
+                                     class="text-brown-secondary cursor-pointer ml-2"/>
+                  <font-awesome-icon v-if="!showCopySuccess"
+                                     icon="fa-duotone fa-solid fa-copy"
+                                     class="text-brown-secondary cursor-pointer ml-2"
+                                     @click="copyMail"/>
+
+                </p>
+                <a href="mailto:inbox@yuua.dev" class="hover:underline">
+                  Send Mail
+                  <font-awesome-icon icon="fa-duotone fa-solid fa-paper-plane"/>
+                </a>
+              </div>
+            </div>
+
+            <p class="text-brown-secondary text-right">
+              <font-awesome-icon icon="fa-duotone fa-solid fa-cookie-bite"/>
+              This website is cookie-less
+            </p>
+          </div>
         </NuxtLayout>
 
-        <div class="bg-brown-primary text-brown-background -mx-8 -mb-8 mt-16 p-8">
-          <div class="flex justify-between items-center mb-4">
-            <a href="/" class="inline-block">
-              <img src="~/assets/yuua-logo-dark.svg" alt="yuua's logo" class="h-12"/>
-            </a>
-            <Button icon="up-to-line" dark @click="scrollToTop">
-              Return to Top
-            </Button>
-          </div>
-          <div class="mb-2">
-            <p class="font-bold">Socials</p>
-            <div class="text-brown-secondary flex gap-x-4 pl-4">
-              <a href="https://github.com/yuuahp" class="hover:underline">
-                <font-awesome-icon icon="fa-brands fa-github"/>
-                GitHub
-              </a>
-              <a href="https://twitter.com/yuuadev" class="hover:underline">
-                <font-awesome-icon icon="fa-brands fa-twitter"/>
-                Twitter
-              </a>
-              <a href="https://www.reddit.com/user/yuuaHP" class="hover:underline">
-                <font-awesome-icon icon="fa-brands fa-reddit"/>
-                Reddit
-              </a>
-              <a href="https://steamcommunity.com/id/yuuahp" class="hover:underline">
-                <font-awesome-icon icon="fa-brands fa-steam"/>
-                Steam
-              </a>
-            </div>
-          </div>
-          <div class="mb-6">
-            <p class="font-bold">Contact</p>
-            <div class="text-brown-secondary flex gap-x-2 pl-4">
-              <p class="px-2 bg-brown-depth rounded-lg text-brown-background">
-                inbox@yuua.dev
-                <font-awesome-icon v-if="showCopySuccess"
-                                   icon="fa-duotone fa-solid fa-check"
-                                   class="text-brown-secondary cursor-pointer ml-2"/>
-                <font-awesome-icon v-else
-                                   icon="fa-duotone fa-solid fa-copy"
-                                   class="text-brown-secondary cursor-pointer ml-2"
-                                   @click="copyMail"/>
-
-              </p>
-              <a href="mailto:inbox@yuua.dev" class="hover:underline">
-                Send Mail
-                <font-awesome-icon icon="fa-duotone fa-solid fa-paper-plane" />
-              </a>
-            </div>
-          </div>
-
-          <p class="text-brown-secondary text-right">
-            <font-awesome-icon icon="fa-duotone fa-solid fa-cookie-bite"/>
-            This website is cookie-less
-          </p>
-        </div>
+        <!-- TODO: header & return to main page for each subpage -->
       </div>
       <!-- card holder -->
-      <div class="w-full -mt-8 relative z-[90]">
+      <div class="w-full -mt-8 relative z-[90] pointer-events-none">
         <div
             class="absolute bg-[#AC9B83] h-[calc(4.75rem+8px)] w-28 -top-[calc(4rem+8px)] left-[calc(50%-3.5rem)] z-10">
           <div class="w-full h-[90%] bg-[#BEB09B]">
@@ -129,8 +125,27 @@ function copyMail() {
 }
 
 function scrollToTop() {
-  document.querySelector('#main')?.scrollTo({ top: 0, behavior: 'smooth' });
+  document.querySelector('#main')?.scrollTo({top: 0, behavior: 'smooth'});
 }
+
+// TODO
+const deltaX = ref(0);
+const deltaY = ref(0);
+
+function calculateDelta(e: MouseEvent) {
+  const x = e.clientX;
+  const y = e.clientY;
+  const halfWidth = window.innerWidth / 2;
+  const halfHeight = window.innerHeight / 2;
+
+  // -1 to 1
+  deltaX.value = (x - halfWidth) / halfWidth;
+  deltaY.value = (y - halfHeight) / halfHeight;
+}
+
+onMounted(() => {
+  window.addEventListener('mousemove', calculateDelta)
+});
 </script>
 
 <style>
@@ -149,16 +164,5 @@ function scrollToTop() {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.2s;
-}
-
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-  filter: blur(1rem);
 }
 </style>

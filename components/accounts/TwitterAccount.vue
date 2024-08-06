@@ -2,6 +2,10 @@
 
 import AccountCard from "~/components/accounts/AccountCard.vue";
 
+const props = defineProps<{
+  link: string;
+}>();
+
 // todo
 
 const mini = ref(false)
@@ -24,7 +28,7 @@ onUnmounted(() => window.removeEventListener('resize', onResize))
 </script>
 
 <template>
-  <AccountCard link="" class="bg-white border-2 border-[#D0D7DE]">
+  <AccountCard :link="link" class="bg-white border-2 border-[#D0D7DE]">
     <div :class="
       'w-[calc(100%+4px)] bg-[#1D9BF0] rounded-t-[calc(1rem-2px)] ' +
       'mt-[-2px] mx-[-2px] border-2 border-b-0 border-[#78C7FD] overflow-hidden ' +

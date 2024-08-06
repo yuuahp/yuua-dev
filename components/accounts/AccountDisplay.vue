@@ -5,21 +5,17 @@ import GitHubAccount from "~/components/accounts/GitHubAccount.vue";
 const props = defineProps<{
   link: string;
 }>();
-
-function openLink() {
-  window.open(props.link, '_blank')
-}
 </script>
 
 <template>
   <div class="card3d group/card">
-    <slot name="card" :openLink="openLink">
-      <GitHubAccount class="w-full mb-2" @click="openLink"/>
+    <slot name="card" :link="link">
+      <GitHubAccount class="w-full mb-2" :link="link"/>
     </slot>
-    <p class="
+    <a class="
       group-hover/card:ml-4 px-4 flex gap-x-2 items-center rounded-lg group-hover/card:bg-brown-primary
       group/label cursor-pointer
-      w-fit max-w-[calc(100%-1rem)] transition-all" @click="openLink">
+      w-fit max-w-[calc(100%-1rem)] transition-all" :href="link" target="_blank">
       <span class="font-bold text-brown-primary group-hover/card:text-brown-background text-nowrap">
         <slot name="name">
           <font-awesome-icon icon="fa-brands fa-github"/>
@@ -33,7 +29,7 @@ function openLink() {
       </span>
       <font-awesome-icon icon="fa-duotone fa-solid fa-up-right-from-square"
                          class="text-brown-primary group-hover/card:text-brown-background"/>
-    </p>
+    </a>
   </div>
 </template>
 
