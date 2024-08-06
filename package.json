@@ -10,9 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@awesome.me/kit-d05f9e5188": "^1.0.4",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-brands-svg-icons": "^6.6.0",
-    "@fortawesome/pro-duotone-svg-icons": "^6.5.1",
     "@fortawesome/vue-fontawesome": "^3.0.6",
     "@nuxt/image": "^1.4.0",
     "nuxt": "^3.11.1",
