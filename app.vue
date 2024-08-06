@@ -122,8 +122,8 @@ useHead({
 
 useSeoMeta({
   ogTitle: "yuua.dev",
-  description: "yuua's personal website",
-  ogDescription: "yuua's personal website",
+  description: "yuua's Personal Portfolio - Works, Socials and Contact",
+  ogDescription: "yuua's Personal Portfolio - Works, Socials and Contact",
   ogImage: "/yuua-cover.png",
   twitterCard: "summary_large_image"
 })
