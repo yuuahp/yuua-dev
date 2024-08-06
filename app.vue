@@ -35,7 +35,7 @@
           <div class="bg-brown-primary text-brown-background -mb-8 -mx-8 mt-16 p-8">
             <div class="flex justify-between items-center mb-4">
               <a href="/" class="inline-block">
-                <img src="~/assets/yuua-logo-dark.svg" alt="yuua's logo" class="h-12"/>
+                <img src="~/assets/yuua-logo-dark.svg" alt="yuua's logo" class="h-10 sm:h-12"/>
               </a>
               <Button icon="up-to-line" dark @click="scrollToTop">
                 Return to Top
@@ -43,7 +43,7 @@
             </div>
             <div class="mb-2">
               <p class="font-bold">Socials</p>
-              <div class="text-brown-secondary flex gap-x-4 pl-4">
+              <div class="text-brown-secondary flex flex-wrap gap-x-4 pl-4">
                 <a href="https://github.com/yuuahp" class="hover:underline">
                   <font-awesome-icon icon="fa-brands fa-github"/>
                   GitHub
@@ -115,6 +115,18 @@
 
 <script setup lang="ts">
 import Button from "~/components/Button.vue";
+
+useHead({
+  titleTemplate: (title) => title ? `${title} | yuua.dev` : "yuua.dev",
+})
+
+useSeoMeta({
+  ogTitle: "yuua.dev",
+  description: "yuua's personal website",
+  ogDescription: "yuua's personal website",
+  ogImage: "/yuua-cover.png",
+  twitterCard: "summary_large_image"
+})
 
 const showCopySuccess = ref(false);
 

@@ -7,16 +7,11 @@ import TwitterAccount from "~/components/accounts/TwitterAccount.vue";
 import AccountDisplay from "~/components/accounts/AccountDisplay.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
-onMounted(() => {
-  // // scroll to top
-  // let main = document.querySelector("#main");
-  //
-  // if (main) {
-  //   main.scrollTop = 0;
-  // } else {
-  //   console.error("main is null");
-  // }
+useHead({
+  title: "Home"
+})
 
+onMounted(() => {
   document.querySelectorAll('.card3d').forEach((card) => {
     let inside = card.querySelector('.inside') as HTMLElement | null;
 
@@ -149,7 +144,9 @@ function Card3D(card: Element, ev: MouseEvent) {
         <WorkCard class="w-full max-w-[30rem]"
                   icon="school"
                   title="School Festival '22"
-                  details="Online culture festival website" no_right_truncate>
+                  details="Online culture festival website"
+                  internal_link="/school-festival-22"
+                  no_right_truncate>
           <div class="w-full h-full relative">
             <GitHubRepo class="w-full h-full"
                         org="yuuahp" repo="sunrise"
@@ -165,7 +162,9 @@ function Card3D(card: Element, ev: MouseEvent) {
         <WorkCard class="w-full max-w-[30rem]"
                   icon="graduation-cap"
                   title="UniDB"
-                  details="Universities' open-campus data website" no_right_truncate>
+                  details="Universities' open-campus data website"
+                  internal_link="/unidb"
+                  no_right_truncate>
           <div class="w-full h-full relative">
             <GitHubRepo class="absolute top-0 left-0 w-full h-full"
                         org="yuuahp" repo="unidb"
@@ -246,7 +245,7 @@ function Card3D(card: Element, ev: MouseEvent) {
         <span class="text-lg text-brown-secondary">(not so)</span> Frequently Asked Questions
         <font-awesome-icon icon="fad fa-messages-question"/>
       </h1>
-      <p class="pl-4 text-brown-secondary mb-4">Collection of questions people often* ask me (YMMV)</p>
+      <p class="pl-4 text-brown-secondary mb-4">Collection of questions people often<span class="text-[.6rem] align-text-top">[citation needed]</span> ask me</p>
       <div class="flex flex-col gap-y-6">
         <FAQ icon="person-circle-question"/>
         <FAQ icon="square-code">

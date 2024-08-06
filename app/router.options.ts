@@ -1,6 +1,5 @@
 import type {RouterConfig} from '@nuxt/schema'
 
-const SCROLL_CONTAINER_ID = 'main';
 const scrollPositions = {};
 
 export default <RouterConfig>{
@@ -11,19 +10,22 @@ export default <RouterConfig>{
         }
 
         const isNavigationForward = (savedPosition === null);
-        const contentEl = document.getElementById(SCROLL_CONTAINER_ID) as HTMLElement;
+        const contentEl = document.querySelector("#main") as HTMLElement;
 
         console.assert(contentEl !== null, 'Scroll container not found');
 
         const nuxt = useNuxtApp();
 
+        console.log(scrollPositions);
+
         if (isNavigationForward) {
+            console.log('save scroll position', from.path);
             scrollPositions[from.path] = {
                 top: contentEl.scrollTop,
                 left: contentEl.scrollLeft
             };
 
-            nuxt.hook('page:transition:finish', () => {
+            nuxt.hook('page:finish', () => {
                 contentEl.scroll({
                     top: 0,
                     left: 0
@@ -31,9 +33,10 @@ export default <RouterConfig>{
             })
 
         } else {
+            console.log('restore scroll position', to.path);
             const savedPosition = scrollPositions[to.path];
             if (savedPosition) {
-                nuxt.hook('page:transition:finish', () => {
+                nuxt.hook('page:finish', () => {
                     contentEl.scroll(savedPosition);
                 });
             }

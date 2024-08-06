@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 </script>
 
 <template>
@@ -7,7 +8,8 @@
     <Header>
       <div class="flex gap-x-2 items-center">
         <NuxtLink to="/" class="cursor-pointer text-base font-bold">
-          Return to Home
+          <font-awesome-icon icon="fa-duotone fa-solid fa-person-to-door" flip="horizontal" class="mr-1"/>
+          <p class="hidden sm:inline-block">Return to Home</p>
         </NuxtLink>
       </div>
     </Header>

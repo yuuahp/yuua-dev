@@ -5,16 +5,9 @@ import Indent from "~/components/the-end-poem/Indent.vue";
 
 const player = ref<string>("yuuaHP");
 
-// onMounted(() => {
-//   // scroll to top
-//   let main = document.querySelector("#main");
-//
-//   if (main) {
-//     main.scrollTop = 0;
-//   } else {
-//     console.error("main is null");
-//   }
-// });
+useHead({
+  title: "終わりの詩"
+})
 
 definePageMeta({
   layout: "gallery",
