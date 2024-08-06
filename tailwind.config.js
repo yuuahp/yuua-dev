@@ -6,7 +6,6 @@ export default {
             'noto-sans': ['Noto Sans JP', 'sans-serif'],
             'noto-serif': ['Noto Serif JP', 'serif'],
             'jb-mono': ['JetBrains Mono', 'monospace'],
-            'sign': ['Herr Von Muellerhoff'],
             'inter': ['Inter', 'sans-serif'],
         },
         extend: {
