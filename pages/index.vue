@@ -10,6 +10,7 @@ import SectionTitle from "~/components/home/SectionTitle.vue";
 
 
 const {locale} = useI18n()
+const mail = ref("inbox@yuua.dev")
 
 useHead({
   title: "Home"
@@ -334,11 +335,11 @@ function Card3D(card: Element, ev: MouseEvent) {
           </template>
           <template #answer v-if="locale == 'en'">
             You can reach me at
-            <a class="font-bold underline text-pink-400" href="mailto:inbox@yuua.dev">inbox@yuua.dev</a>.
+            <a class="font-bold underline text-pink-400" :href="'mailto:' + mail">{{ mail }}</a>.
             Feel free to drop me a message anytime!
           </template>
           <template #answer v-if="locale == 'jp'">
-            <a class="font-bold underline text-pink-400" href="mailto:inbox@yuua.dev">inbox@yuua.dev</a>
+            <a class="font-bold underline text-pink-400" :href="'mailto:' + mail">{{ mail }}</a>
             までご連絡ください。お気軽にどうぞ！
           </template>
         </FAQ>
@@ -401,10 +402,6 @@ function Card3D(card: Element, ev: MouseEvent) {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-.card-flex {
-  @apply w-[24rem] sm:w-[calc(50%-.5rem)];
 }
 
 .trapezoid {

@@ -78,7 +78,7 @@
               <p class="font-bold">{{ $t('footer.contact') }}</p>
               <div class="text-brown-secondary flex gap-x-2 pl-4">
                 <p class="px-2 bg-brown-depth rounded-lg text-brown-background font-jb-mono">
-                  inbox@yuua.dev
+                  {{ mail }}
                   <font-awesome-icon v-if="showCopySuccess"
                                      icon="fa-duotone fa-solid fa-check"
                                      class="text-brown-secondary cursor-pointer ml-1"/>
@@ -88,7 +88,7 @@
                                      @click="copyMail"/>
 
                 </p>
-                <a href="mailto:inbox@yuua.dev" class="hover:underline">
+                <a :href="'mailto:' + mail" class="hover:underline">
                   {{ $t('footer.sendmail') }}
                   <font-awesome-icon icon="fa-duotone fa-solid fa-paper-plane"/>
                 </a>
@@ -141,10 +141,11 @@ useSeoMeta({
   twitterCard: "summary_large_image"
 })
 
-const showCopySuccess = ref(false);
+const mail = ref("inbox@yuua.dev")
+const showCopySuccess = ref(false)
 
 function copyMail() {
-  navigator.clipboard.writeText('inbox@yuua.dev');
+  navigator.clipboard.writeText(mail.value);
   showCopySuccess.value = true;
   setTimeout(() => showCopySuccess.value = false, 2000);
 }
