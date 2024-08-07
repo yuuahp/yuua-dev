@@ -1,0 +1,48 @@
+{
+  "home": {
+    "title": "Hello, I’m yuua",
+    "sections": {
+      "works": {
+        "title": "Works & Projects",
+        "short": "Works",
+        "description": "Here is my works, projects and contributions!"
+      },
+      "socials": {
+        "title": "Socials",
+        "description": "My accounts on social networks."
+      }
+    },
+    "intro": {
+      "line2": "I learn and develop by letting my curiosity lead the way.",
+      "line3": "What are you looking for today?",
+      "line4": "or just scroll down~"
+    },
+    "faq": {
+      "who": "Who are you?",
+      "languages": "What languages do you prefer?",
+      "stacks": "And tech stacks?",
+      "android": "Are you an Android developer?",
+      "email": "What's your email?",
+      "name": "Why not capitalize the \"y\" in \"yuua\"? Is it a typo?",
+      "hp": "What does \"HP\" in \"yuuaHP\" stand for?"
+    }
+  },
+  "sunrise": {
+    "title": "School Festival '22",
+    "description": "Online culture festival website"
+  },
+  "unidb": {
+    "description": "Unified source for open-campus information"
+  },
+  "the-end-poem-jp": {
+    "description": "Translation of The End Poem by Julian Gough"
+  },
+  "footer": {
+    "socials": "Socials",
+    "contact": "Contact",
+    "sendmail": "Send Mail",
+    "cookie": "This website is cookie-less",
+    "top": "Return to Top"
+  },
+  "return-home": "Return to Home"
+}

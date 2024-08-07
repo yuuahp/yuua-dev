@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { locale, setLocale } = useI18n()
+
 useHead({
   title: "About School Festival '22"
 })
@@ -11,8 +13,8 @@ definePageMeta({
 <template>
   <div class="pt-8 text-brown-primary">
     <img src="~/assets/Sunrise.svg" alt="Sunrise Logo" class="h-48 mx-auto mb-8"/>
-    <h1 class="text-3xl sm:text-4xl font-black mb-4">School Festival '22</h1>
-    <p class="mb-4">
+    <h1 class="text-3xl sm:text-4xl font-black mb-4">{{ $t("sunrise.title") }}</h1>
+    <p class="mb-4" v-if="locale == 'en'">
       The official website for the online school festival 2022
       <span class="text-brown-secondary">- project sunrise internally -</span>
       was my second work for school festivals.<br/>
@@ -20,6 +22,13 @@ definePageMeta({
       1) Used Nuxt.js and Tailwind CSS, and the overall quality was significantly improved.<br/>
       2) The website was designed to be more interactive and fun, to convey the atmosphere of the school festival.<br/>
       3) The prototype was created in Figma to achieve more consistent design.
+    </p>
+    <p class="mb-4" v-if="locale == 'jp'">
+      2022 年オンライン文化祭の公式ウェブサイトは、文化祭における私の 2 作目のウェブサイトでした。<br/>
+      前年とは違い、<br/>
+      1) Nuxt.js と Tailwind CSS を使用し、全体的なクオリティが大幅に向上しました。<br/>
+      2) インタラクティブで楽しめるように設計し、オンラインでも学園祭の雰囲気を感じられるように工夫しました。<br/>
+      3) より一貫したデザインを実現するために、Figma でプロトタイプを作成しました。
     </p>
     <div class="grid grid-cols-3 w-full gap-1 sm:gap-2 rounded-xl overflow-hidden grid-rows-4 aspect-square">
       <div class="row-start-1 col-start-1 col-span-2 row-span-2 w-full h-full overflow-hidden">

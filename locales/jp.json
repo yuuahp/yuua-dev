@@ -1,0 +1,48 @@
+{
+  "home": {
+    "title": "こんにちは、ゆうあです",
+    "sections": {
+      "works": {
+        "title": "作品・プロジェクト",
+        "short": "作品",
+        "description": "私の作品、プロジェクトやコントリビューションをまとめました！"
+      },
+      "socials": {
+        "title": "SNS",
+        "description": "私の SNS アカウントです。"
+      }
+    },
+    "intro": {
+      "line2": "興味の赴くままに学び、開発しています。",
+      "line3": "本日は何をお探しですか？",
+      "line4": "特に何もない？　なら、下にスクロールしてみてください！"
+    },
+    "faq": {
+      "who": "誰？",
+      "languages": "お好きな言語は？",
+      "stacks": "スタックは？",
+      "android": "もしかして Android 開発者ですか？",
+      "email": "メールは？",
+      "name": "Shift 押し忘れてませんか？「Yuua」にしないんですか？",
+      "hp": "「yuuaHP」の「HP」ってどういう意味？"
+    }
+  },
+  "sunrise": {
+    "title": "2022 年文化祭",
+    "description": "オンライン文化祭ウェブサイト"
+  },
+  "unidb": {
+    "description": "オープンキャンパス情報の統一データベース"
+  },
+  "the-end-poem-jp": {
+    "description": "Julian Gough による The End Poem の和訳"
+  },
+  "footer": {
+    "socials": "SNS",
+    "contact": "お問い合わせ",
+    "sendmail": "メールを送信",
+    "cookie": "このサイトはクッキーを使用していません",
+    "top": "トップへ戻る"
+  },
+  "return-home": "ホームに戻る"
+}

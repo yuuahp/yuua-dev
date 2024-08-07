@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const localePath = useLocalePath()
+
 const props = defineProps<{
   icon: string;
   title: string;
@@ -16,7 +18,7 @@ function openLink() {
 </script>
 
 <template>
-  <NuxtLink :to="internal_link">
+  <NuxtLink :to="localePath(internal_link || '/')">
     <div class="
       bg-white border-8 border-brown-primary rounded-2xl p-4 relative cursor-pointer group transition-all
       hover:border-[10px] flat-shadow w-full h-48 inline-block select-none

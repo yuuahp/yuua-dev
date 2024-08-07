@@ -6,7 +6,7 @@ const props = defineProps<{
   link: string;
 }>();
 
-// todo
+// TODO
 
 const mini = ref(false)
 const micro = ref(false)

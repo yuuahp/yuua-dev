@@ -17,6 +17,18 @@
           h-full md:h-auto
           md:aspect-[4/3]
           p-8 border-t-8 md:border-8 border-brown-primary bg-brown-background md:rounded-3xl relative">
+
+      <div class="absolute -top-8 right-4 sm:right-8 h-8 px-4 bg-brown-primary text-brown-background rounded-t-lg select-none cursor-pointer font-bold pt-[.1rem]"
+           v-if="locale == 'jp'" @click="setLocale('en')">
+        <font-awesome-icon icon="fa-duotone fa-solid fa-rotate" class="mr-1" />
+        English
+      </div>
+      <div class="absolute -top-8 right-4 sm:right-8 h-8 px-4 bg-brown-primary text-brown-background rounded-t-lg select-none cursor-pointer font-bold pt-[.1rem]"
+           v-if="locale == 'en'" @click="setLocale('jp')">
+        <font-awesome-icon icon="fa-duotone fa-solid fa-rotate" class="mr-1" />
+        日本語
+      </div>
+
       <!-- reflection -->
       <div
           class="absolute top-0 left-0 w-full h-full md:rounded-2xl overflow-hidden border-white/20 border-4 border-t-0 pointer-events-none z-50">
@@ -34,15 +46,15 @@
           <NuxtPage/>
           <div class="bg-brown-primary text-brown-background -mb-8 -mx-8 mt-16 p-8">
             <div class="flex justify-between items-center mb-4">
-              <a href="/" class="inline-block">
+              <NuxtLink :to="localePath('/')" class="inline-block">
                 <img src="~/assets/yuua-logo-dark.svg" alt="yuua's logo" class="h-10 sm:h-12"/>
-              </a>
+              </NuxtLink>
               <Button icon="up-to-line" dark @click="scrollToTop">
-                Return to Top
+                {{ $t('footer.top') }}
               </Button>
             </div>
             <div class="mb-2">
-              <p class="font-bold">Socials</p>
+              <p class="font-bold">{{ $t('footer.socials') }}</p>
               <div class="text-brown-secondary flex flex-wrap gap-x-4 pl-4">
                 <a href="https://github.com/yuuahp" class="hover:underline">
                   <font-awesome-icon icon="fa-brands fa-github"/>
@@ -63,21 +75,21 @@
               </div>
             </div>
             <div class="mb-6">
-              <p class="font-bold">Contact</p>
+              <p class="font-bold">{{ $t('footer.contact') }}</p>
               <div class="text-brown-secondary flex gap-x-2 pl-4">
-                <p class="px-2 bg-brown-depth rounded-lg text-brown-background">
+                <p class="px-2 bg-brown-depth rounded-lg text-brown-background font-jb-mono">
                   inbox@yuua.dev
                   <font-awesome-icon v-if="showCopySuccess"
                                      icon="fa-duotone fa-solid fa-check"
-                                     class="text-brown-secondary cursor-pointer ml-2"/>
+                                     class="text-brown-secondary cursor-pointer ml-1"/>
                   <font-awesome-icon v-if="!showCopySuccess"
                                      icon="fa-duotone fa-solid fa-copy"
-                                     class="text-brown-secondary cursor-pointer ml-2"
+                                     class="text-brown-secondary cursor-pointer ml-1"
                                      @click="copyMail"/>
 
                 </p>
                 <a href="mailto:inbox@yuua.dev" class="hover:underline">
-                  Send Mail
+                  {{ $t('footer.sendmail') }}
                   <font-awesome-icon icon="fa-duotone fa-solid fa-paper-plane"/>
                 </a>
               </div>
@@ -85,12 +97,10 @@
 
             <p class="text-brown-secondary text-right">
               <font-awesome-icon icon="fa-duotone fa-solid fa-cookie-bite"/>
-              This website is cookie-less
+              {{ $t('footer.cookie') }}
             </p>
           </div>
         </NuxtLayout>
-
-        <!-- TODO: header & return to main page for each subpage -->
       </div>
       <!-- card holder -->
       <div class="w-full -mt-8 relative z-[90] pointer-events-none">
@@ -115,6 +125,9 @@
 
 <script setup lang="ts">
 import Button from "~/components/Button.vue";
+
+const { locale, setLocale } = useI18n()
+const localePath = useLocalePath()
 
 useHead({
   titleTemplate: (title) => title ? `${title} | yuua.dev` : "yuua.dev",
