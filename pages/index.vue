@@ -66,7 +66,6 @@ function Card3D(card: Element, ev: MouseEvent) {
 
 <template>
   <div class="relative flex flex-col gap-y-16">
-
     <div class="h-12 md:h-[5rem] -mb-16"></div>
     <!-- intro -->
     <div ref="intro" class="flex flex-col sm:flex-row items-center sm:items-start gap-x-16 gap-y-4 mb-8">
@@ -77,7 +76,7 @@ function Card3D(card: Element, ev: MouseEvent) {
         <div class="invisible absolute w-2 h-[calc(100%-1rem)] top-3 -right-3 bg-[#2f2833] rounded-r-2xl"/>
       </div>
       <div class="text-brown-primary pt-4">
-        <h1 class="text-3xl sm:text-4xl font-black mb-4 text-center sm:text-start">
+        <h1 :class="'font-black mb-4 text-center sm:text-start ' + ((locale == 'jp') ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl')">
           {{ $t("home.title") }}
           <font-awesome-icon icon="fad fa-solid fa-hand-wave"/>
         </h1>
