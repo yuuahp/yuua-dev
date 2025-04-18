@@ -297,10 +297,10 @@ function Card3D(card: Element, ev: MouseEvent) {
             {{ $t("home.faq.languages") }}
           </template>
           <template #answer v-if="locale == 'en'">
-            I love working with <span class="font-bold">Kotlin</span>, Java, Typescript and JavaScript.
+            I love working with <span class="font-bold">Kotlin</span>, Java and Typescript.
           </template>
           <template #answer v-if="locale == 'jp'">
-            <span class="font-bold">Kotlin</span>, Java, Typescript と JavaScript を好んで使っています。特に Kotlin。
+            <span class="font-bold">Kotlin</span>, Java と Typescript を好んで使っています。特に Kotlin。
           </template>
         </FAQ>
         <FAQ icon="boxes-stacked">
@@ -308,11 +308,11 @@ function Card3D(card: Element, ev: MouseEvent) {
             {{ $t("home.faq.stacks") }}
           </template>
           <template #answer v-if="locale == 'en'">
-            I usually work with <span class="font-bold">Nuxt.js</span>, <span class="font-bold">Tailwind</span>,
+            I usually work with <span class="font-bold">Next.js</span>, <span class="font-bold">Nuxt.js</span>, <span class="font-bold">Tailwind</span>,
             <span class="font-bold">Ktor</span> and Firebase.
           </template>
           <template #answer v-if="locale == 'jp'">
-            <span class="font-bold">Nuxt.js</span>, <span class="font-bold">Tailwind</span>,
+            <span class="font-bold">Next.js</span>, <span class="font-bold">Nuxt.js</span>, <span class="font-bold">Tailwind</span>,
             <span class="font-bold">Ktor</span> や Firebase をよく使います。
           </template>
         </FAQ>
