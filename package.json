@@ -14,8 +14,8 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/vue-fontawesome": "^3.0.6",
     "@nuxt/image": "^1.4.0",
-    "@nuxtjs/i18n": "^8.3.3",
-    "nuxt": "^3.11.1",
+    "@nuxtjs/i18n": "^9.5.3",
+    "nuxt": "^3.16.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },

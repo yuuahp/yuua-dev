@@ -18,14 +18,16 @@
           md:aspect-[4/3]
           p-8 border-t-8 md:border-8 border-brown-primary bg-brown-background md:rounded-3xl relative">
 
-      <div class="absolute -top-8 right-4 sm:right-8 h-8 px-4 bg-brown-primary text-brown-background rounded-t-lg select-none cursor-pointer font-bold pt-[.1rem]"
-           v-if="locale == 'jp'" @click="setLocale('en')">
-        <font-awesome-icon icon="fa-duotone fa-solid fa-rotate" class="mr-1" />
+      <div
+          class="absolute -top-8 right-4 sm:right-8 h-8 px-4 bg-brown-primary text-brown-background rounded-t-lg select-none cursor-pointer font-bold pt-[.1rem]"
+          v-if="locale == 'jp'" @click="setLocale('en')">
+        <font-awesome-icon icon="fa-duotone fa-solid fa-rotate" class="mr-1"/>
         English
       </div>
-      <div class="absolute -top-8 right-4 sm:right-8 h-8 px-4 bg-brown-primary text-brown-background rounded-t-lg select-none cursor-pointer font-bold pt-[.1rem]"
-           v-if="locale == 'en'" @click="setLocale('jp')">
-        <font-awesome-icon icon="fa-duotone fa-solid fa-rotate" class="mr-1" />
+      <div
+          class="absolute -top-8 right-4 sm:right-8 h-8 px-4 bg-brown-primary text-brown-background rounded-t-lg select-none cursor-pointer font-bold pt-[.1rem]"
+          v-if="locale == 'en'" @click="setLocale('jp')">
+        <font-awesome-icon icon="fa-duotone fa-solid fa-rotate" class="mr-1"/>
         日本語
       </div>
 
@@ -126,7 +128,7 @@
 <script setup lang="ts">
 import Button from "~/components/Button.vue";
 
-const { locale, setLocale } = useI18n()
+const {locale, setLocale} = useI18n()
 const localePath = useLocalePath()
 
 useHead({
