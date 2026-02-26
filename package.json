@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@awesome.me/kit-d05f9e5188": "^1.0.4",
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/fontawesome-svg-core": "^7.0.0",
     "@fortawesome/vue-fontawesome": "^3.0.6",
     "@nuxt/image": "^1.4.0",
     "@nuxtjs/i18n": "^9.5.3",
